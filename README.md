@@ -1,5 +1,9 @@
 # Notes
 
+my agnostic sass framework based on purecss.io
+
+*class namespace 's'* - change/remove to suit
+
 - Use OOCSS, SMACSS, BEM where possible
 - use dashes for all class names, with the exception of the module name
 - Name spacing should be at component level
