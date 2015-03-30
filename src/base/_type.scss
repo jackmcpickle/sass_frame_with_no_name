@@ -1,0 +1,57 @@
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+}
+
+h1 {
+  color: $hot-red;
+  text-transform: uppercase;
+  margin: 1em 0 1em;
+  @include spread(font-size, 25px, 50px);
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.page-title {
+  @include spread(font-size, 35px, 70px);
+}
+
+.main-heading {
+  @include spread(font-size, 25px, 50px);
+}
+
+.sub-heading {
+  font-weight: normal;
+  text-transform: uppercase;
+  display: block;
+  @include spread(font-size, 13px, 20px);
+}
+
+.small-heading {
+  color: $deep-red;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5em;
+  @include spread(font-size, 12px, 14px);
+}
+
+a {
+  text-decoration: none;
+  color: $hot-red;
+  border-bottom: 1px dotted $hot-red;
+  transition: 0.15s ease-in-out;
+  transition-property: all;
+
+  @include hover() {
+    color: $deep-red;
+    border-bottom-color: $deep-red;
+
+  }
+  &.with-arrow:before {
+    content: '\2192';
+    display: inline-block;
+    *display: inline;
+    margin-right: 3px;
+  }
+}

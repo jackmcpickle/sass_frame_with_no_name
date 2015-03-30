@@ -1,0 +1,52 @@
+.stabs {
+  border-bottom: 1px solid $gray;
+  margin: 0;
+  padding: 0 15px;
+  list-style: none;
+}
+
+.stabs-li {
+  display: block;
+  padding: 0;
+  width: 100%;
+  margin-bottom: -1px;
+  @include media(">=medium") {
+    width: auto;
+    display: inline;
+
+    &:last-child .stabs-link {
+      border-right-style: solid;
+    }
+  }
+}
+
+.stabs-link {
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: block;
+  text-rendering: optimizeLegibility;
+  border: 1px solid transparent;
+
+  background: $smoke-gray;
+  border-color: $gray;
+  color: #666;
+  @include media(">=medium") {
+    border-right-style: none;
+    *display: inline;
+    display: inline-block;
+  }
+
+  @include spread(padding, 8px 12px, 15px 25px);
+  @include spread(font-size, 70%, 90%);
+  @include hover() {
+    @include dark-colors();
+  }
+  .active > & {
+    background: $white;
+    border-color: $gray;
+    border-bottom-color: $white;
+    color: $deep-red;
+  }
+
+}

@@ -1,0 +1,29 @@
+@mixin primary-colors {
+  color: $deep-red;
+  background: $hot-red;
+  border-color: darken($hot-red, 5%);
+}
+
+@mixin success-colors {
+  color: $jet-black;
+  background: $olive-green;
+  border-color: darken($olive-green, 5%);
+}
+
+@mixin info-colors {
+  color: $jet-black;
+  background: $teal-blue;
+  border-color: darken($teal-blue, 5%);
+}
+
+@mixin dark-colors {
+  color: $white;
+  background: $deep-red;
+  border-color: darken($deep-red, 5%);
+}
+
+@mixin gray-colors {
+  color: #777;
+  background: $smoke-gray;
+  border-color: #ccc;
+}

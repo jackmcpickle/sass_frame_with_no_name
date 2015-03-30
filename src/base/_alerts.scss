@@ -1,0 +1,4 @@
+.salert {
+  font-size: 90%;
+  @include spread(padding, 8px 12px, 15px 25px);
+}

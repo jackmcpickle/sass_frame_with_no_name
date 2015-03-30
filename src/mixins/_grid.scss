@@ -1,0 +1,75 @@
+// Based on Pure CSS frame work
+
+@mixin build-row($display: default) {
+  letter-spacing: -0.32em; // This may need to be tweaked based on font size and family.
+  *letter-spacing: normal;
+  *word-spacing: -0.43em;
+  text-rendering: optimizespeed;
+
+  @if $display == flex {
+    display: flex;
+    flex-flow: row wrap;
+
+    display: -ms-flexbox;
+    -ms-flex-flow: row wrap;
+
+    // ordering of items flow
+    &.row-right {
+      justify-content: flex-end;
+      text-align: inherit;
+    }
+    &.row-center {
+      justify-content: center;
+      text-align: inherit;
+    }
+    &.row-left {
+      justify-content: flex-start;
+      text-align: inherit;
+    }
+
+    &.row-spaced {
+      justify-content: space-between;
+      text-align: inherit;
+    }
+
+    &.row-reverse {
+      // flex-direction: row-reverse;
+      direction: rtl;
+    }
+  }
+  @else {
+    display: block;
+    //@include clearfix();
+
+    // ordering of items flow
+    &.row-right {
+      text-align: right;
+    }
+    &.row-center {
+      text-align: center;
+    }
+    &.row-left {
+      text-align: left;
+    }
+
+    &.row-reverse {
+      direction: rtl;
+    }
+  }
+
+}
+
+@mixin build-column($display: default) {
+  display: inline-block;
+  *display: inline; /* IE < 8: fake inline-block */
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  vertical-align: top;
+  text-rendering: auto;
+  text-align: initial;
+}
+
+@function grid-width($n) {
+  @return percentage( $n / $total-columns)
+}

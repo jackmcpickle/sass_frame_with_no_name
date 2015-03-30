@@ -1,0 +1,311 @@
+/*csslint box-model:false*/
+/*
+Box-model set to false because we're setting a height on select elements, which
+also have border and padding. This is done because some browsers don't render
+the padding. We explicitly set the box-model for select elements to border-box,
+so we can ignore the csslint warning.
+*/
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="week"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+select,
+textarea {
+  padding: 0.5em 0.6em;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  vertical-align: middle;
+  box-sizing: border-box;
+  &:focus {
+    outline: 0;
+    border-color: $dark-blue;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: #eaeded;
+    color: #cad2d3;
+  }
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+input:not([type]) {
+  padding: 0.5em 0.6em;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+/* Chrome (as of v.32/34 on OS X) needs additional room for color to display. */
+/* May be able to remove this tweak as color inputs become more standardized across browsers. */
+input[type="color"] {
+    padding: 0.2em 0.5em;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+input:not([type]):focus {
+    outline: 0;
+    border-color: $dark-blue;
+}
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+    outline: thin solid $dark-blue;
+    outline: 1px auto $dark-blue;
+}
+.scheckbox,
+.sradio {
+    margin: 0.5em 0;
+    display: block;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+input:not([type])[disabled] {
+    cursor: not-allowed;
+    background-color: #eaeded;
+    color: #cad2d3;
+}
+input[readonly],
+select[readonly],
+textarea[readonly] {
+    background-color: #eee; /* menu hover bg color */
+    color: #777; /* menu text color */
+    border-color: #ccc;
+}
+
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
+    color: darken($hot-red, 10%);
+    border-color: $hot-red;
+}
+input[type="file"]:focus:invalid:focus,
+input[type="radio"]:focus:invalid:focus,
+input[type="checkbox"]:focus:invalid:focus {
+    outline-color: $hot-red;
+}
+select {
+    /* Normalizes the height; padding is not sufficient. */
+    height: 2.25em;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+select[multiple] {
+    height: auto;
+}
+label {
+    margin: 0.5em 0 0.2em;
+}
+fieldset {
+    margin: 0;
+    padding: 0.35em 0 0.75em;
+    border: 0;
+}
+legend {
+    display: block;
+    width: 100%;
+    padding: 0.3em 0;
+    margin-bottom: 0.3em;
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.sform-stacked {
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="url"],
+    input[type="date"],
+    input[type="month"],
+    input[type="time"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="week"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="color"],
+    input[type="file"],
+    select,
+    label,
+    textarea {
+        display: block;
+        margin: 0.25em 0;
+    }
+
+    /*
+    Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+    since IE8 won't execute CSS that contains a CSS3 selector.
+    */
+
+    input:not([type]) {
+        display: block;
+        margin: 0.25em 0;
+    }
+    input,
+    textarea,
+    select,
+    .sform-message-inline {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        vertical-align: middle;
+    }
+    textarea {
+        vertical-align: top;
+    }
+}
+
+/* Aligned Forms */
+.sform-aligned {
+    .scontrol-group {
+        margin-bottom: 0.5em;
+        > label {
+            display: block;
+            vertical-align: middle;
+            width: 100%;
+            margin: 0 0 0.25em 0;
+            @include media("screen", ">=small") {
+                display: inline-block;
+                text-align: right;
+                width: 10em;
+                margin: 0 1em 0 0;
+            }
+        }
+    }
+    .scontrols {
+        margin: 1.5em 0 0 0;
+        @include media("screen", ">=small") {
+            margin: 1.5em 0 0 11em;
+        }
+    }
+    .sinput-group {
+        @include media("screen", ">=small") {
+            display: inline-block;
+        }
+        vertical-align: middle;
+        @include spread(padding, 8px, 8px 25px);
+        background: #e5e5e5;
+        min-width: 250px;
+    }
+    .sinput-group-item {
+        margin-top: 0.5em;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+/* Rounded Inputs */
+input.sinput-rounded,
+.sinput-rounded {
+    border-radius: 2em;
+    padding: 0.5em 1em;
+}
+
+/* Grouped Inputs */
+.sgroup {
+    fieldset {
+        margin-bottom: 10px;
+    }
+    input,
+    textarea {
+        display: block;
+        padding: 10px;
+        margin: 0 0 -1px;
+        border-radius: 0;
+        position: relative;
+        top: -1px;
+    }
+    input:focus,
+    textarea:focus {
+        z-index: 3;
+    }
+    input:first-child,
+    textarea:first-child {
+        top: 1px;
+        border-radius: 4px 4px 0 0;
+        margin: 0;
+    }
+    input:first-child:last-child,
+    textarea:first-child:last-child {
+        top: 1px;
+        border-radius: 4px;
+        margin: 0;
+    }
+    input:last-child,
+    textarea:last-child {
+        top: -2px;
+        border-radius: 0 0 4px 4px;
+        margin: 0;
+    }
+    button {
+        margin: 0.35em 0;
+    }
+}
+
+// Base grid
+@for $i from 1 through $total-columns {
+  .size-#{$i} {
+    width: grid-width($i);
+  }
+}
+
+/* Inline help for forms */
+/* NOTE: shelp-inline is deprecated. Use .sform-message-inline instead. */
+.shelp-inline,
+.sform-message-inline {
+    display: inline-block;
+    padding-left: 0.3em;
+    color: #666;
+    vertical-align: middle;
+    font-size: 0.875em;
+}
+
+/* Block help for forms */
+.sform-message {
+    display: block;
+    color: #666;
+    font-size: 0.875em;
+}
+
+.sform-required-indicator {
+    color: $hot-red;
+    letter-spacing: -1em;
+    position: relative;
+    left: -0.25em;
+}
+
+.sform-required-message {
+    color: $hot-red;
+    font-size: 13px;
+}
+
+.input-auto {
+  width: auto;
+  max-width: 100%;
+}

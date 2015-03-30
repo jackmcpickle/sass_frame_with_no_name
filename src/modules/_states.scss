@@ -1,0 +1,141 @@
+// Text color states
+.text {
+  &-red {
+    color: $hot-red;
+  }
+  &-blue {
+    color: $dark-blue;
+  }
+  &-teal {
+    color: $teal-blue;
+  }
+
+  &-white {
+    color: $white;
+  }
+  &-gray {
+    color: $gray;
+  }
+  &-sub {
+    text-transform: uppercase;
+    font-size: 70%;
+    font-weight: bold;
+    line-height: 1.1;
+  }
+  &-mute {
+    color: $gray;
+  }
+}
+
+.hover-white {
+  @include hover() {
+    color: $white;
+  }
+}
+
+// Background color states
+.background-gradient {
+  &-blue {
+    background-color: $dark-blue;
+    background: linear-gradient(90deg, $dark-blue 0%, $dark-blue-to 100%);
+
+  }
+
+  &-red {
+    background-color: $deep-red-to;
+    background: linear-gradient(135deg, $deep-red-to 0%, $hot-red 100%);
+  }
+}
+
+.background {
+  &-red {
+    background-color: $hot-red;
+  }
+  &-blue {
+    background-color: $dark-blue;
+  }
+  &-teal {
+    background-color: $teal-blue;
+  }
+  &-darkred {
+    background-color: $deep-red;
+  }
+  &-white {
+    background-color: $white;
+  }
+}
+
+.darken-background {
+  background: rgba($deep-red, 0.3);
+}
+
+
+
+.flexbox .vertical-align {
+  @include vertical-align();
+  top: 0;
+  transform: translateY(0);
+  align-self: center;
+  width: 100%;
+}
+
+.no-margin { margin: 0 }
+.inline-block { display: inline-block; *display: inline; }
+.fill-box { position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
+.bold { font-weight: 800; }
+
+// Text Aligns
+
+.text-left    { text-align: left; }
+.text-right   { text-align: right; }
+.text-center  { text-align: center; }
+
+.text-left-row > *    { text-align: left; }
+.text-right-row > *  { text-align: right; }
+.text-center-row > * { text-align: center; }
+
+@each $size, $breakpoint in $breakpoints  {
+  @include media("screen", ">=#{$breakpoint}") {
+    .text-left-#{$size}    { text-align: left; }
+    .text-right-#{$size}   { text-align: right; }
+    .text-center-#{$size} { text-align: center; }
+  }
+}
+
+// Floats
+
+.left    { float: left; }
+.right   { float: right; }
+
+@each $size, $breakpoint in $breakpoints  {
+  @include media("screen", ">=#{$breakpoint}") {
+    .left-#{$size}   { float: left; }
+    .right-#{$size}  { float: right; }
+  }
+}
+
+
+// Visibility
+
+.hide  { display: none }
+.show  { display: inherit }
+
+@each $size, $breakpoint in $breakpoints  {
+  @include media("screen", ">=#{$breakpoint}") {
+    .hide-#{$size}  { display: none !important}
+    .show-#{$size}  { display: inherit !important }
+  }
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+//text direction - useful with row-reverse
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}

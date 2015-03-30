@@ -1,0 +1,104 @@
+.button {
+  border: 1px solid transparent;
+  text-shadow: none;
+  cursor: pointer;
+  display: inline-block;
+  *display: inline;
+  font-size: 90%; //scale?
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
+  transition: 0.15s ease-in-out;
+  transition-property: all;
+  // letter-spacing: -0.03em;
+  @include spread(padding, 8px 12px, 15px 25px);
+
+  &.large {
+    font-size: 110%;
+    @include spread(padding, 12px 20px, 25px 45px);
+  }
+
+  &.small {
+    font-size: 80%;
+    @include spread(padding, 5px 9px, 10px 15px);
+  }
+
+  &.mini {
+    font-size: 70%;
+    @include spread(padding, 3px 6px, 6px 10px);
+  }
+
+  &.full {
+    display: block;
+    width: 100%;
+  }
+  &.disabled, &[disabled] {
+    color: darken($gray, 30%);
+    background: darken($gray, 10%);
+    border-color: darken($gray, 30%);
+    cursor: not-allowed;
+  }
+}
+
+.default {
+  background: $white;
+  border-color: $gray;
+  color: $deep-red;
+  &.button {
+    @include hover() {
+      background: $deep-red;
+      border-color: darken($deep-red, 5%);
+      color: $white;
+    }
+  }
+}
+
+.primary {
+  @include primary-colors();
+  &.button {
+    @include hover() {
+      background: $white;
+      border-color: $gray;
+    }
+  }
+}
+
+.success {
+  @include success-colors();
+  &.button {
+    @include hover() {
+      background: $white;
+      border-color: $gray;
+      color: $jet-black;
+    }
+  }
+}
+
+.info {
+  @include info-colors();
+  &.button {
+    @include hover() {
+      background: $white;
+      border-color: $gray;
+    }
+  }
+}
+
+.dark {
+  @include dark-colors();
+  &.button {
+    @include hover() {
+      background: $white;
+      border-color: $gray;
+      color: $deep-red;
+    }
+  }
+}
+
+.button-group {
+  margin-top: -10px;
+  .button {
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,94 @@
+// see http://purecss.io/grids/#using-grids-with-custom-fonts
+html, button, input, select, textarea, .srow [class*=sgrid-] {
+  font-family: $special-font-stack;
+}
+
+.scontain {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Use mobile view for < IE9
+.lt-ie9 .scontain {
+  max-width: 767px;
+}
+
+.srow {
+  @include build-row();
+  width: 100%;
+}
+
+.flexbox .srow {
+  @include build-row(flex);
+  width: 100%;
+  &.clearfix:before, &.clearfix:after {
+    content: initial; // breaks flexgrid row
+  }
+}
+
+[class*=sgrid-] {
+  @include build-column();
+  &.srow {
+    @include build-row();
+    display: inline-block;
+  }
+  .flexbox &.srow {
+    @include build-row(flex);
+  }
+}
+
+.scol {
+  padding-left: ($column-gutter / 3.5);
+  padding-right: ($column-gutter / 3.5);
+  @include media("screen", ">=small") {
+    padding-left: ($column-gutter / 2);
+    padding-right: ($column-gutter / 2);
+  }
+}
+
+.sgrid-grow {
+  flex-grow: 1;
+}
+
+// Base grid
+@for $i from 1 through $total-columns {
+  .sgrid-#{$i} {
+    width: grid-width($i);
+  }
+}
+
+@each $size, $breakpoint in $breakpoints {
+  @include media("screen", ">=#{$breakpoint}") {
+    @for $i from 1 through $total-columns {
+      .sgrid-#{$size}-#{$i}, .srow.sgrid-#{$size}-#{$i} {
+        width: grid-width($i);
+      }
+    }
+  }
+}
+
+// Offsets
+@for $i from 0 through $total-columns {
+  .sgrid-offset-#{$i} {
+    margin-left: grid-width($i);
+  }
+}
+
+@each $size, $breakpoint in $breakpoints {
+  @include media("screen", ">=#{$breakpoint}") {
+    @for $i from 0 through $total-columns {
+      .sgrid-#{$size}-offset-#{$i} {
+        margin-left: grid-width($i);
+      }
+    }
+  }
+}
+
+@each $size, $breakpoint in $breakpoints {
+  @include media("screen", ">=#{$breakpoint}") {
+    .sgrid-#{$size}-auto, .srow.sgrid-#{$size}-auto {
+      width: auto;
+    }
+  }
+}

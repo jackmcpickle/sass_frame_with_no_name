@@ -1,0 +1,40 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {  background-color: $smoke-gray }
+
+body {
+  font-size: $base-font-size;
+  font-family: $special-font-stack;
+  line-height: $base-line-height;
+  color: $body-font-color;
+  font-weight: $body-font-weight;
+  font-style: $body-font-style;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style-type: circle;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid $gray;
+  margin: 2em 0;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    display: inline;
+    padding: 0;
+  }
+}
