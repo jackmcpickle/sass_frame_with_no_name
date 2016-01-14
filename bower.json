@@ -1,0 +1,28 @@
+{
+  "name": "sass_frame_with_no_name",
+  "version": "1.0.0",
+  "homepage": "https://github.com/jackmcpickle/sass_frame_with_no_name",
+  "authors": [
+    "Jack McNicol <jackmcpickle@gmail.com>"
+  ],
+  "description": "A agnostic sass framework",
+  "main": "app.scss",
+  "keywords": [
+    "sass",
+    "framework",
+    "flexbox",
+    "grid"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "include-media": "~1.4.2"
+  }
+}

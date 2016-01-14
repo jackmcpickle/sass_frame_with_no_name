@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
+    "bower": "bower install",
     "gulp": "gulp",
     "build": "gulp build"
   },
