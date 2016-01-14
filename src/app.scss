@@ -24,7 +24,6 @@
 
 @import "global"; // Mixins, Functions, Normalize
 
-@import "libs/normalize";
 @import "base/base";
 
 @import "base/grid";
@@ -34,8 +33,5 @@
 @import "base/tables";
 @import "base/tabs";
 @import "base/alerts";
-
-@import "modules/content";
-
 // States always last
 @import "modules/states";
